@@ -29659,6 +29659,8 @@ const char* cases[][2] = {
     {"_ZNKO1X1hEv", "X::h() const &&"},
 //    {"_Z1fM1XVKFivEMS_VFivEMS_KOFivE", "f(int (X::*)() const volatile, int (X::*)() volatile, int (X::*)() const &&)"},
 //    {"_Z1fM1XRFivEMS_OFivEMS_KOFivE", "f(int (X::*)() &, int (X::*)() &&, int (X::*)() const &&)"},
+    {"_Z1fM1XKFivOE", "f(int (X::*)() const &&)"},
+    {"_Z1fM1XKFivOEMS_FOKivEMS_VFS3_RS2_E", "f(int (X::*)() const &&, int const&& (X::*)(), int const&& (X::*)(int const&) volatile)"},
     {"_ZN5test12f0ENS_1TILZNS_1xEEEE", "test1::f0(test1::T<test1::x>)"},
     {"_ZN5test12f1ENS_2t1ILZNS_2f0EfEEE", "test1::f1(test1::t1<test1::f0(float)>)"},
     {"_ZN5test22f1ENS_2t1IXadL_ZNS_2f0EfEEEE", "test2::f1(test2::t1<&test2::f0(float)>)"},
@@ -30246,6 +30248,8 @@ const char* cases[][2] = {
 
     {"_Z3fooPU9__ptrauthILj3ELb1ELj234EEPi", "foo(int* __ptrauth<3u, true, 234u>*)"},
     {"_Z3fooIPU9__ptrauthILj1ELb0ELj64EEPiEvT_", "void foo<int* __ptrauth<1u, false, 64u>*>(int* __ptrauth<1u, false, 64u>*)"},
+
+    {"_ZN1CpmEi", "C::operator->*(int)"},
     // clang-format on
 };
 
@@ -30291,7 +30295,7 @@ const unsigned NF = sizeof(fp_literal_cases) / sizeof(fp_literal_cases[0]);
 const unsigned NEF = sizeof(fp_literal_cases[0].expecting) /
                      sizeof(fp_literal_cases[0].expecting[0]);
 
-const char *invalid_cases[] = {
+const char* invalid_cases[] = {
     // clang-format off
     "_ZIPPreEncode",
     "Agentt",
@@ -30349,6 +30353,8 @@ const char *invalid_cases[] = {
     "_ZGI3Foo",
     "_ZGIW3Foov",
     "W1x",
+    "_ZN1CdtEi",
+    "_ZN1CdsEi",
     // clang-format on
 };
 
